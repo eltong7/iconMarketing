@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quadro de Tarefas</title>
+  <link rel="stylesheet" href="/css/styleCliente.css"/>
+</head>
+<body>
+  <main class="board">
+    <section class="column" id="todo-column" ondragover="allowDrop(event)" ondrop="drop(event, 'todo')">
+      <h2>A fazer</h2>
+      <div class="task-card todo" draggable="true" ondragstart="drag(event)">
+        <p><strong>27/03/25</strong> – Tablet view</p>
+        <p class="desc">Show audio in a note and playback UI</p>
+        <button class="tag">Note interface</button>
+      </div>
+      <div class="task-card todo" draggable="true" ondragstart="drag(event)">
+        <p><strong>29/03/25</strong> – Audio recording</p>
+        <p class="desc">Show audio in a note and playback UI</p>
+        <button class="tag">Note interface</button>
+      </div>
+    </section>
+
+    <section class="column" id="done-column" ondragover="allowDrop(event)" ondrop="drop(event, 'done')">
+      <h2>Concluído</h2>
+      <div class="task-card done" draggable="true" ondragstart="drag(event)">
+        <p><strong>15/03/25</strong> – Mobile view</p>
+        <p class="desc">Functions for both web and native apps.</p>
+      </div>
+      <div class="task-card done" draggable="true" ondragstart="drag(event)">
+        <p><strong>17/03/25</strong> – Desktop view</p>
+        <p class="desc">PWA for website and native apps.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="script/campanhas.js"></script>
+</body>
+</html>
