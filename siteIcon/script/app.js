@@ -18,7 +18,7 @@ function loadPage(page){
     .then(data => {
         resource.innerHTML = data;
         
-        resource.querySelectorAll('script[src]').forEach(oldScript => {
+        resource.querySelectorAll('script').forEach(oldScript => {
             const newScript = document.createElement('script');
             if(oldScript.src){
                 newScript.src = oldScript.src;
@@ -30,10 +30,10 @@ function loadPage(page){
             document.body.appendChild(newScript);
             oldScript.remove();
         });
-        if(page === 'dashboard'){
-            import('/script/dashboard.js')
+        if(page === 'graficos'){
+            import('/script/graficos.js')
             .then(module => {
-                module.inicializarDashboard();
+                module.inicializarGraficos();
             })
         }else if(page === 'clientes'){
             import('/script/clientes.js')
@@ -49,7 +49,22 @@ function loadPage(page){
         import('/script/campanhas.js')
         .then(module => {
             module.inicializarCampanhas();
-        })}})
+        })
+    }else if(page === 'home'){
+        import('/script/home.js')
+        .then(module => {
+            module.inicializarHome();
+        })
+    }else if(page === 'relatorios'){
+        import('/script/relatorios.js')
+        .then(module => {
+            module.inicializarRelatorios();
+        })
+    }
+
+
+    
+    })
     .catch(error => {
         console.error('Erro', error);
     });

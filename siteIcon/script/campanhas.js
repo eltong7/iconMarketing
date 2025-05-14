@@ -1,5 +1,3 @@
-
-
 let draggedElement = null;
 
 function drag(event) {
