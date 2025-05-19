@@ -1,0 +1,89 @@
+
+  <link rel="stylesheet" href="/css/styleCliente.css" />
+ 
+  <main class="flex">
+    
+
+    <div class="panel">
+        <div class="resource">
+            <h1 style="font-size: 48px; margin: 20px 0;">Clientes</h1>
+
+            <div class="top-bar flex center">
+                <div class="search-bar flex center">
+                    <i class="fa fa-search"></i>
+                    <input type="text" placeholder="Pesquisar" />
+                </div>
+                <button class="add-btn"><i class="fa fa-user-plus"></i> Add Cliente</button>
+            </div>
+
+            <div class="content">
+                <div class="card clientes-box" style="grid-column: span 3;">
+                    <div class="table-header">
+                        <span>Cliente</span>
+                        <span>CNPJ</span>
+                        <span>Status</span>
+                    </div>
+                    <div class="table-row">
+                        <div class="cliente">
+                            <strong>Nome Cliente</strong>
+                            <small>Nome Fantasia</small>
+                        </div>
+                        <div class="cnpj">XX.XXX.XXX/0001-XX</div>
+                        <div class="status ativo">Ativo</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="cliente">
+                            <strong>Nome Cliente</strong>
+                            <small>Nome Fantasia</small>
+                        </div>
+                        <div class="cnpj">XX.XXX.XXX/0001-XX</div>
+                        <div class="status inativo">Inativo</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </main>
+
+  <!-- MODAL DE ADICIONAR CLIENTE -->
+<div id="modalAddCliente" class="modal hidden">
+  <div class="modal-content">
+    <span class="close-modal" id="closeModal">&times;</span>
+    <h2>Novo Cliente</h2>
+    <div class="upload-sections">
+      <button class="upload-btn" data-target="upload1">Adicionar Contrato</button>
+      <input type="file" id="upload1" class="upload-input hidden" />
+
+      <button class="upload-btn" data-target="upload2">Adicionar Documento</button>
+      <input type="file" id="upload2" class="upload-input hidden" />
+
+      <button class="upload-btn" data-target="upload3">Adicionar Comprovante</button>
+      <input type="file" id="upload3" class="upload-input hidden" />
+    </div>
+  </div>
+</div>
+
+
+<script>
+  const openModalBtn = document.querySelector(".add-btn");
+  const modal = document.getElementById("modalAddCliente");
+  const closeModalBtn = document.getElementById("closeModal");
+
+  if (openModalBtn && modal && closeModalBtn) {
+    openModalBtn.addEventListener("click", () => {
+      modal.classList.remove("hidden");
+    });
+
+    closeModalBtn.addEventListener("click", () => {
+      modal.classList.add("hidden");
+    });
+
+    document.querySelectorAll(".upload-btn").forEach(button => {
+      button.addEventListener("click", () => {
+        const targetId = button.dataset.target;
+        const input = document.getElementById(targetId);
+        input.classList.toggle("hidden");
+      });
+    });
+  }
+</script>

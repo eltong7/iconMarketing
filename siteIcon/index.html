@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styleCliente.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    
+    <title>Document</title>
+</head>
+<body>
+    <main class="flex">
+        
+<div class="sidebar">
+    <header class="flex center logo-header">
+        <img src="assets/iconlogo.png" class="logo-img">
+    </header>
+    <nav class="nav-menu">
+        <ul>
+            <li class="active group" data-page="home"><i class="fa-solid fa-table-cells-large"></i><span>Home</span></li>
+            <!--<li class="group"><i class="fa-solid fa-camera"></i><span>Social Media</span></li>-->
+            <li data-page="campanhas" class="group"><i class="fa-solid fa-paper-plane"></i><span>Campanhas</span></li>
+            <li class="active group" data-page="graficos"><i class="fa-solid fa-chart-pie"></i><span>Gráficos</span></li>
+            <li data-page="documentos" class="group"><i class="fa-solid fa-file-contract"></i><span>Documentos</span></li>
+        </ul>
+    </nav>
+    <div class="footer-menu">
+        <li data-page="clientes" class="group"><i class="fa-solid fa-user-group"></i><span>Clientes</span></li>
+    </div>
+</div>
+    <div class="panel">
+            <div class="panel-user flex center">
+                <section class="flex center">
+                    <i class="fa-solid fa-bell"></i>
+                </section>
+                <section class="user flex">
+
+                    <section>
+                        <h4 id="nomeUser">Icon Marketing</h3>
+                        <p id="emailUser">iconmarketing@gmail.com</p>
+                    </section>
+                    <section class="flex center">
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </section>
+                    
+                </section>
+
+            </div>
+            <div class="resource">
+                
+        
+            </div>
+        </div>
+        
+    </main>
+    <script src="script/app.js"></script>
+</body>
+</html>

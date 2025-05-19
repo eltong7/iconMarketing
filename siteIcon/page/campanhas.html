@@ -1,0 +1,76 @@
+ <link rel="stylesheet" href="/css/styleCliente.css"/>
+
+  <main class="board">
+    <!-- A FAZER -->
+    <section class="column" id="todo-column"
+             ondragover="allowDrop(event)"
+             ondrop="drop(event, 'todo')">
+      <h2>A fazer</h2>
+      <div class="task-card todo" draggable="true" ondragstart="drag(event)">
+        <p><strong>27/03/25</strong> – Tablet view</p>
+        <p class="desc">Show audio in a note and playback UI</p>
+        <button class="tag">Note interface</button>
+      </div>
+      <div class="task-card todo" draggable="true" ondragstart="drag(event)">
+        <p><strong>27/03/25</strong> – Tablet view</p>
+        <p class="desc">Show audio in a note and playback UI</p>
+        <button class="tag">Note interface</button>
+      </div>
+      <div class="task-card todo" draggable="true" ondragstart="drag(event)">
+        <p><strong>27/03/25</strong> – Tablet view</p>
+        <p class="desc">Show audio in a note and playback UI</p>
+        <button class="tag">Note interface</button>
+      </div>
+    </section>
+
+    <!-- CONCLUÍDO -->
+    <section class="column" id="done-column"
+             ondragover="allowDrop(event)"
+             ondrop="drop(event, 'done')">
+      <h2>Concluído</h2>
+      <div class="task-card done" draggable="true" ondragstart="drag(event)">
+        <p><strong>15/03/25</strong> – Mobile view</p>
+        <p class="desc">Functions for web and native apps.</p>
+      </div>
+      <div class="task-card done" draggable="true" ondragstart="drag(event)">
+        <p><strong>15/03/25</strong> – Mobile view</p>
+        <p class="desc">Functions for web and native apps.</p>
+      </div>
+      <div class="task-card done" draggable="true" ondragstart="drag(event)">
+        <p><strong>15/03/25</strong> – Mobile view</p>
+        <p class="desc">Functions for web and native apps.</p>
+      </div>
+    </section>
+  </main>
+  <script>
+    let draggedElement = null;
+
+function drag(event) {
+  draggedElement = event.target;
+}
+
+function allowDrop(event) {
+  event.preventDefault();
+}
+
+function drop(event, statusClass) {
+  event.preventDefault();
+
+  // Garante que estamos aplicando no elemento com classe "column"
+  let column = event.target;
+  while (column && !column.classList.contains("column")) {
+    column = column.parentElement;
+  }
+
+  if (draggedElement && column) {
+    column.appendChild(draggedElement);
+
+    // Remove as classes anteriores
+    draggedElement.classList.remove("todo", "done");
+    // Adiciona a nova classe com base na coluna destino
+    draggedElement.classList.add(statusClass);
+    draggedElement = null;
+  }
+}
+
+  </script>

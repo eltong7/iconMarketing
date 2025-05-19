@@ -1,0 +1,87 @@
+<link rel="stylesheet" href="/css/style-home.css" />
+
+<div class="main-container">
+  <div class="header">
+    <h2>Bem vindo ao gerenciamento de sistema</h2>
+    <img src="assets/iconlogo.png" class="logo-img" />
+    <p class="tagline">o verdadeiro marketing da construção civil</p>
+  </div>
+
+  <div class="carousel-container">
+    <button class="nav left" id="prevBtn">❮</button>
+    <div class="carousel" id="carousel">
+      <div class="carousel-track" id="carouselTrack">
+        <img src="/assets/instalogo.png" alt="img1" class="carousel-image" />
+        <img src="/assets/instalogo.png" alt="img2" class="carousel-image" />
+        <img src="/assets/instalogo.png" alt="img3" class="carousel-image" />
+        <img src="/assets/instalogo.png" alt="img4" class="carousel-image" />
+        <img src="/assets/instalogo.png"alt="img5" class="carousel-image" />
+        <img src="/assets/instalogo.png" alt="img6" class="carousel-image" />
+      </div>
+    </div>
+    <button class="nav right" id="nextBtn">❯</button>
+  </div>
+
+  <div class="dots" id="dots"></div>
+
+  <button class="follow-btn">Follow</button>
+</div>
+
+<script>
+  const slideTrack = document.getElementById('carouselTrack');
+  const imgs = document.querySelectorAll('.carousel-image');
+  const dotsBox = document.getElementById('dots');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const carousel = document.getElementById('carousel');
+
+  let index = 0;
+  let intervalo;
+
+  // Cria pontinhos dinamicamente
+  imgs.forEach((_, i) => {
+    const dot = document.createElement('span');
+    dot.classList.add('dot');
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => goTo(i));
+    dotsBox.appendChild(dot);
+  });
+
+  const dots = document.querySelectorAll('.dot');
+
+  function update() {
+    slideTrack.style.transform = `translateX(-${index * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === index));
+  }
+
+  function next() {
+    index = (index + 1) % imgs.length;
+    update();
+  }
+
+  function prev() {
+    index = (index - 1 + imgs.length) % imgs.length;
+    update();
+  }
+
+  function goTo(i) {
+    index = i;
+    update();
+  }
+
+  prevBtn.onclick = prev;
+  nextBtn.onclick = next;
+
+  function startAuto() {
+    intervalo = setInterval(next, 3000);
+  }
+
+  function stopAuto() {
+    clearInterval(intervalo);
+  }
+
+  carousel.addEventListener('mouseenter', stopAuto);
+  carousel.addEventListener('mouseleave', startAuto);
+
+  startAuto(); // inicia rotação automática
+</script>
