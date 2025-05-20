@@ -426,3 +426,49 @@
   font-size: 24px;
   cursor: pointer;
 }
+
+.form-cadastro {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+}
+
+.form-cadastro label {
+  font-size: 14px;
+  margin-left: 4px;
+}
+
+.form-cadastro input {
+  background-color: #1f1f1f;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 20px;
+  color: white;
+  outline: none;
+}
+
+.form-cadastro input::placeholder {
+  color: #888;
+  font-size: 13px;
+}
+
+.btn-cadastrar {
+  margin-top: 12px;
+  background-color: #02FF7C;
+  color: black;
+  border: none;
+  padding: 12px;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-cadastrar:hover {
+  opacity: 0.9;
+}
+.buttons-clientes {
+  display: flex;
+  gap: 10px;
+}

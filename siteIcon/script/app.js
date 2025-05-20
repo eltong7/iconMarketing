@@ -63,22 +63,6 @@ function loadPage(page){
     .catch(error => {
         console.error('Erro', error);
     });
-    
-    fetch(pageUrl)
-  .then(res => res.text())
-  .then(html => {
-    content.innerHTML = html;
 
-    // 🔽 ISSO AQUI É ESSENCIAL:
-    const scripts = content.querySelectorAll("script");
-    scripts.forEach(script => {
-      const newScript = document.createElement("script");
-      if (script.src) {
-        newScript.src = script.src;
-      } else {
-        newScript.textContent = script.textContent;
-      }
-      document.body.appendChild(newScript);
-    });
-  });
+    
 }

@@ -13,7 +13,10 @@
                     <i class="fa fa-search"></i>
                     <input type="text" placeholder="Pesquisar" />
                 </div>
-                <button class="add-btn"><i class="fa fa-user-plus"></i> Add Cliente</button>
+                <div class="buttons-clientes">
+  <button class="add-btn" id="openUploadModal">Upload documentos</button>
+  <button class="add-btn" id="openCadastroModal">Cadastrar Cliente</button>
+</div>
             </div>
 
             <div class="content">
@@ -49,7 +52,7 @@
 <div id="modalAddCliente" class="modal hidden">
   <div class="modal-content">
     <span class="close-modal" id="closeModal">&times;</span>
-    <h2>Novo Cliente</h2>
+    <h2>Upload documentos</h2>
     <div class="upload-sections">
       <button class="upload-btn" data-target="upload1">Adicionar Contrato</button>
       <input type="file" id="upload1" class="upload-input hidden" />
@@ -60,12 +63,40 @@
       <button class="upload-btn" data-target="upload3">Adicionar Comprovante</button>
       <input type="file" id="upload3" class="upload-input hidden" />
     </div>
+
+    
   </div>
+
+  
+
+</div>
+<div id="modalCadastroCliente" class="modal hidden">
+  <div class="modal-content">
+    <span class="close-modal" id="closeCadastroModal">&times;</span>
+    <h2>Cadastro de Cliente</h2>
+  <div class="form-cadastro">
+  <label for="nome">Nome Completo:</label>
+  <input type="text" id="nome" placeholder="Digite nome do cliente">
+
+  <label for="username">Username:</label>
+  <input type="text" id="username" placeholder="Digite o nome fantasia do cliente">
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" placeholder="Digite o email do cliente">
+
+  <label for="email">CNPJ:</label>
+  <input type="email" id="email" placeholder="Digite o CNPJ do cliente">
+
+
+  <button class="btn-cadastrar" id="btnCadastrarCliente">Cadastre-se</button>
+   </div>
+  </div>
+</div>
 </div>
 
 
 <script>
-  const openModalBtn = document.querySelector(".add-btn");
+  /*const openModalBtn = document.querySelector(".add-btn");
   const modal = document.getElementById("modalAddCliente");
   const closeModalBtn = document.getElementById("closeModal");
 
@@ -85,5 +116,59 @@
         input.classList.toggle("hidden");
       });
     });
-  }
+  }*/
+  const uploadModal = document.getElementById("modalAddCliente");
+  const cadastroModal = document.getElementById("modalCadastroCliente");
+
+  const openUploadBtn = document.getElementById("openUploadModal");
+  const openCadastroBtn = document.getElementById("openCadastroModal");
+
+  const closeUpload = document.getElementById("closeModal");
+  const closeCadastro = document.getElementById("closeCadastroModal");
+
+  // Abrir modais
+  openUploadBtn?.addEventListener("click", () => {
+    uploadModal.classList.remove("hidden");
+  });
+  openCadastroBtn?.addEventListener("click", () => {
+    cadastroModal.classList.remove("hidden");
+  });
+
+  // Fechar modais
+  closeUpload?.addEventListener("click", () => {
+    uploadModal.classList.add("hidden");
+  });
+  closeCadastro?.addEventListener("click", () => {
+    cadastroModal.classList.add("hidden");
+  });
+
+  // Upload: toggle inputs
+  document.querySelectorAll(".upload-btn").forEach(button => {
+    button.addEventListener("click", () => {
+      const targetId = button.dataset.target;
+      const input = document.getElementById(targetId);
+      input.classList.toggle("hidden");
+    });
+  });
+
+  // Cadastro: validação
+  const cadastrarBtn = document.getElementById("btnCadastrarCliente");
+  cadastrarBtn?.addEventListener("click", () => {
+    const nome = document.getElementById("nome").value.trim();
+    const username = document.getElementById("username").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const senha = document.getElementById("senha").value.trim();
+    const confirmar = document.getElementById("confirmar").value.trim();
+
+    if (!nome || !username || !email || !senha || !confirmar) {
+      return alert("Preencha todos os campos.");
+    }
+
+    if (senha !== confirmar) {
+      return alert("As senhas não coincidem.");
+    }
+
+    alert("Cliente cadastrado com sucesso!");
+    cadastroModal.classList.add("hidden");
+  });
 </script>
