@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         
     });
+    loadPage('home');
+    setActiveSidebarItem('home');
 });
 
 
@@ -17,6 +19,7 @@ function loadPage(page){
     .then(response => response.text())
     .then(data => {
         resource.innerHTML = data;
+        setActiveSidebarItem(page);
         
         resource.querySelectorAll('script').forEach(oldScript => {
             const newScript = document.createElement('script');
@@ -65,4 +68,22 @@ function loadPage(page){
     });
 
     
+  
 }
+
+function setActiveSidebarItem(page) {
+  document.querySelectorAll('.group').forEach(item => {
+    if (item.dataset.page === page) {
+      item.classList.add('active');
+    } else {
+      item.classList.remove('active');
+    }
+  });
+}
+
+  // Detecta clique nos itens do menu
+  
+
+  // Opcional: definir página ativa ao carregar
+  // const currentPage = 'home'; // ou 'campanhas', etc.
+  // setActiveSidebarItem(currentPage);

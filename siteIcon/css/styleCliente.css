@@ -96,15 +96,15 @@
     background-color: var(--cor-cinza);
   }
   
-  .sidebar nav ul li.active {
-    background-color: var(--cor-primaria);
-    color: black;
-    font-weight: bold;
-  }
+  .sidebar .group.active {
+  background-color: var(--cor-primaria);
+  color: black;
+  font-weight: bold;
+}
   
-  .sidebar nav ul li.active i {
-    color: black;
-  }
+  .sidebar .group.active i {
+  color: black;
+}
   
   .sidebar nav ul li:first-child {
     background: none;
@@ -144,12 +144,16 @@
     padding-left: 20px;
     overflow: hidden;*/
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
     width: 100%;
     height: 100%;
     overflow: hidden;
   }
-  
+  .panel-user i{
+    font-size: 1.5em;
+    color: var(--cor-primaria);
+    margin-right: 20px;
+  }
   .panel-user {
     justify-content: end;
     width: 100%;
